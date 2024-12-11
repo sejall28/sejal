@@ -14,7 +14,7 @@ class BST
 		{
 			root=NULL;
 		}
-		void createbst(int);		
+		void createbst(int x);		
 		void inorder(tree *);
 		void preorder(tree *);
 		void postorder(tree *);
