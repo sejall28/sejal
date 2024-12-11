@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+class CircularQueue {
+   int front,rear;
+   int queue[100];
+   public: 
+          CircularQueue() {
+             front=rear=-1;
+           int n=5;
+          }
+          void enqueue(int data);
+          void dequeue();
+          void display();
+};
+void CircularQueue::enqueue(int data) {
+    int n=5;
+   if(front==-1 && rear==-1) {
+      front=rear=0;
+      queue[rear]=data;
+   }
+   else if((rear+1)%n==front) {
+      cout<<"Queue is Full";
+   }
+   else {
+       rear=(rear+1)%n;
+       queue[rear]=data;
+   }
+}
+void CircularQueue::dequeue() {
+    int n=5;
+   if(front==-1) {
+       cout<<"Underflow";
+   }
+   else if(front==rear) {
+       cout<<"Deleted element is "<<queue[front];
+       front=rear=-1;
+   }
+   else {
+       cout<<"Deleted element is "<<queue[front];
+       front=(front+1)%n;
+   }
+}
+void CircularQueue::display() {
+   int i=front,n=5;
+   if(front==-1 && rear==-1) {
+       cout<<"Queue is empty";
+   }
+   else {
+       while(i!=rear) {
+          cout<<queue[i]<<" ";
+          i=(i+1)%n;
+       }
+       cout<<queue[rear]<<endl;
+   }
+}
+int main() {
+   CircularQueue q;
+   int cq[5],n;
+  cout<<"\nEnter the no. of elements max 5  ";
+  cin>>n;
+  for(int i=0;i<n;i++){
+      cout<<"\nEnter values";
+      cin>>cq[i];
+      q.enqueue(cq[i]);
+  }
+   cout<<"Queue : ";
+   q.display();
+   cout<<"Dequeued : ";
+   q.dequeue();
+   cout<<"\n Queue : ";
+   q.display();
+   return 0;
+}
