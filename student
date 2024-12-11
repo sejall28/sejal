@@ -129,7 +129,7 @@ void binarysearch(struct Student s[],int n,char data[]){
         }
         else
         {
-            right=mid+1;
+            left=mid+1;
         }
     }
     if(flag==1)
