@@ -1,0 +1,65 @@
+import java.util.*;
+
+abstract class Shape{
+    protected double dim1,dim2;
+    public void inputdata(){
+        Scanner scr=new Scanner(System.in);
+        dim1=scr.nextDouble();
+        dim2=scr.nextDouble();
+    }
+    public abstract double computearea();
+    }
+    
+class Triangle extends Shape{
+    public void inputdata(){
+        System.out.println("Enter the base and height of rectangle");
+        super.inputdata();
+    }
+    public double computearea(){
+        return 0.5*dim1*dim2;
+    }
+}    
+
+class Rectangle extends Shape{
+    public void inputdata(){
+        System.out.println("Enter the length and breadth of rectangle");
+        super.inputdata();
+    }
+    public double computearea(){
+        return dim1*dim2;
+    }
+}
+
+public class Main{
+    public static void main(String[] args){
+    Scanner scr=new Scanner(System.in);
+    Shape sh;
+    String choice=null;
+    int ch;
+    
+    do{
+        System.out.println("Enter the choice ");
+        System.out.println("\n1.Triangle  \n2.Rectangle \n3.Exit");
+        ch=scr.nextInt();
+        
+        switch(ch){
+            case 1:sh=new Triangle();
+                   sh.inputdata();
+                   System.out.println("Area of triangle is "+sh.computearea());
+                   System.out.println("Do you want to continue press'y'");
+                   choice=scr.next();
+                   break;
+            case 2:sh=new Rectangle();
+                   sh.inputdata();
+                   System.out.println("Area of rectangle is "+sh.computearea());
+                   System.out.println("Do you want to continue press'y'");
+                   choice=scr.next();
+                   break;
+            case 3:break;     
+            default:
+              System.out.println("Enter valid choice ");
+        }
+    }while(choice.equalsIgnoreCase("y"));
+        
+    }
+}
