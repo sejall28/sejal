@@ -1,0 +1,88 @@
+import java.util.*;
+interface Vehicle{  //we donot have any return type for interface
+    void gear_Change(); //just declariing the method ,not methhod body
+    void speed_up();
+    void apply_brakes(); //abstract method already as it is declared inside the interface
+}
+class Bicycle implements Vehicle{  /*abstract method should be implemented inside the inherit classes*/
+        public void gear_Change(){
+        System.out.println("Gear changed in Bicycle");
+        }
+        public void speed_up(){
+             System.out.println("Speed up in Bicycle");
+        }
+        public void apply_brakes(){
+            System.out.println("Brakes applied in Bicycle");
+        }
+    
+}
+
+class Bike implements Vehicle{
+    public void gear_Change(){
+        System.out.println("Gear changed in Bike");
+        }
+        public void speed_up(){
+             System.out.println("Speed up in Bike");
+        }
+        public void apply_brakes(){
+            System.out.println("Brakes applied in Bike");
+        }
+}
+
+class Car implements Vehicle{
+   public void gear_Change(){
+        System.out.println("Gear changed in Car");
+        }
+        public void speed_up(){
+             System.out.println("Speed up in Car");
+        }
+        public void apply_brakes(){
+            System.out.println("Brakes applied in Car");
+        } 
+}
+
+public class Main{
+    public static void main(String[] args){
+        Scanner scr=new Scanner(System.in);
+        int ch;
+        String choice=null;
+       do{ 
+        System.out.println("\n*******Choose from the below vehicles *******");
+        System.out.println("\n1.Bicycle \n2.Bike \n3.Car \n4.Exit");
+        ch=scr.nextInt();
+        
+        switch(ch){
+            case 1:
+                Bicycle obj1=new Bicycle();
+                obj1.gear_Change();
+                obj1.speed_up();
+                obj1.apply_brakes();
+        System.out.println("Do you want to continue press 'y'");
+        choice=scr.next();
+                break;
+            case 2:
+                Bike obj2=new Bike();
+                obj2.gear_Change();
+                obj2.speed_up();
+                obj2.apply_brakes();
+         System.out.println("Do you want to continue press 'y'");
+        choice=scr.next();        
+                break;
+            case 3:
+                Car obj3=new Car();
+                obj3.gear_Change();
+                obj3.speed_up();
+                obj3.apply_brakes();
+         System.out.println("Do you want to continue press 'y'");
+        choice=scr.next();        
+                break;
+            case 4:System.out.println("Successfully exited.....");
+                break;
+            default:
+            System.out.println("Invalid choice please try again :) ");
+            break;
+        }
+        }while(choice.equalsIgnoreCase("y"));
+        scr.close();
+    }
+}
